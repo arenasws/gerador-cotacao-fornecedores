@@ -21,6 +21,24 @@ Foi criado para resolver um problema real de retaguarda e suporte a vendas. Ante
 
 ---
 
+## 📁 Estrutura do Projeto
+A arquitetura foi pensada para ser limpa e separar as responsabilidades:
+
+```text
+📦 Sys_Fornecedor
+ ┣ 📂 screenshots/          # Evidências do projeto rodando
+ ┣ 📂 src/                  # Código Fonte
+ ┃ ┣ 📜 main.py             # Entrypoint da Aplicação e Janela Principal Tkinter
+ ┃ ┣ 📜 database.py         # Camada de manipulação de dados Pandas/Openpyxl
+ ┃ ┣ 📜 imagem.py           # Integração com Google API e Cache multithread
+ ┃ ┗ 📜 pdf_generator.py    # Lógica estrutural do ReportLab A4
+ ┣ 📜 .env.example          # Exemplo das credenciais exigidas de API
+ ┣ 📜 requirements.txt      # Dependências lockadas
+ ┗ 📜 README.md             # Esta documentação
+```
+
+---
+
 ## 🚀 Como Rodar o Projeto Localmente
 
 ### 1. Preparando o Ambiente
@@ -52,23 +70,33 @@ python src/main.py
 
 ## 📸 Telas do Sistema em Ação
 
-**1. Carregamento da Planilha Raiz:**
+Para ilustrar o uso detalhado da nossa solução de orçamentos, aqui está o funcionamento do painel:
+
+**1. Carregamento da Planilha Raiz (Home):**
+> Janela inicial pronta para receber os dados do fornecedor `.xlsx` ou `.csv`
 ![Carregamento de Planilhas](screenshots/tela_carregamento_planilha.png)
 
 **2. Sistema Principal Visualizando os Itens e Buscando API:**
+> Seleção e exibição inteligente de metadados consumindo `Google Custom Search API`
 ![Sistema Principal](screenshots/tela_principal_sistema.png)
+
+**3. Pesquisa Expandida (Imagens Secundárias):**
+> O usuário clica, e as multi-threads baixam o cache de imagens para a galeria
 ![Sistema Principal 2](screenshots/tela_principal2_sistema.png)
 
-**3. Montagem da Lista (Carrinho):**
+**4. Montagem da Lista (Carrinho):**
+> Transição dos itens pesquisados e mapeados para o fechamento do orçamento
 ![Montagem da Lista](screenshots/tela_montagem_lista.png)
 
-**4. PDF Gerado Para o Cliente:**
+**5. Relatório e PDF Gerado Para o Cliente:**
+> View final onde o módulo ReportLab escreve e consolida nossos PDFs Orçamentais
 ![Relatório Gerado](screenshots/tela_pdf_gerador.png)
 
 ## 📌 Fluxo de Uso
 1. **Carregar:** Selecione uma planilha (Ex: lista de peças de hardware).
 2. **Mapear Colunas:** O sistema agrupa automaticamente, mas você pode escolher qual coluna é a *Descrição* e qual é o *Preço*.
 3. **Buscar:** Digite no filtro para achar as peças.
-4. **Visualizar:** Clique em um item para o sistema buscar a imagem real da peça via API do Google.
-5. **Orçar:** Clique em "Adicionar Selecionados" para ir montando o carrinho final.
-6. **Exportar:** Ao clicar em "Gerar PDF", o sistema compila o relatório, salva e abre o arquivo pronto para envio ao cliente.
+4. **Visualizar Pelo Cache (1 Clique):** Clique uma vez em um item para o sistema baixar as miniaturas da peça e renderizar dentro do painel.
+5. **Busca Externa (Clique Duplo):** Faltou imagem no painel ou quer ver em tela cheia? Dê um *duplo-clique* rápido na linha do produto na lista. O sistema abrirá automaticamente o seu navegador principal pesquisando o produto no Google Imagens! 
+6. **Orçar:** Clique em "Adicionar Selecionados" para ir montando o carrinho final.
+7. **Exportar:** Ao clicar em "Gerar PDF", o sistema compila o relatório, salva e abre o arquivo pronto para envio ao cliente.
