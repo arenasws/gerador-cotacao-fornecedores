@@ -50,7 +50,22 @@ Basta rodar o arquivo principal. A interface gráfica será iniciada automaticam
 python src/main.py
 ```
 
-## 📸 Fluxo de Uso
+## 📸 Telas do Sistema em Ação
+
+**1. Carregamento da Planilha Raiz:**
+![Carregamento de Planilhas](screenshots/tela_carregamento_planilha.png)
+
+**2. Sistema Principal Visualizando os Itens e Buscando API:**
+![Sistema Principal](screenshots/tela_principal_sistema.png)
+![Sistema Principal 2](screenshots/tela_principal2_sistema.png)
+
+**3. Montagem da Lista (Carrinho):**
+![Montagem da Lista](screenshots/tela_montagem_lista.png)
+
+**4. PDF Gerado Para o Cliente:**
+![Relatório Gerado](screenshots/tela_pdf_gerador.png)
+
+## 📌 Fluxo de Uso
 1. **Carregar:** Selecione uma planilha (Ex: lista de peças de hardware).
 2. **Mapear Colunas:** O sistema agrupa automaticamente, mas você pode escolher qual coluna é a *Descrição* e qual é o *Preço*.
 3. **Buscar:** Digite no filtro para achar as peças.
